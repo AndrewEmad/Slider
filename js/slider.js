@@ -13,7 +13,7 @@ var numSlides = 0,
         btn.onclick = (function(b, j) {
             return function() { showSlide(b, j) }
         })(btn, i);
-        btn.dataset.slide = (function(j) { return j })(i);
+        btn.dataset.slide = i;
         dots.appendChild(btn);
     }
     document.getElementById("slides-container").appendChild(dots);
