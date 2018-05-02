@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Slider</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
+</head>
+
+<body>
+    <div id="slider">
+        <div id="slides-container">
+            <button class="prev" onclick="prevSlide();">&larr;</button>
+            <div class="slide" data-index="0" style="background-color:blueviolet;opacity:1">
+                <img src="img/1.jpg" />
+            </div>
+            <div class="slide" data-index="1" style="background-color:green;opacity:0">
+                <img src="img/2.jpg" />
+            </div>
+            <div class="slide" data-index="2" style="background-color:yellow;opacity:0">
+                <img src="img/3.jpg" />
+            </div>
+            <div class="slide" data-index="3" style="background-color:orange;opacity:0">
+                <img src="img/4.jpg" />
+            </div>
+            <button class="next" onclick="nextSlide();">&rarr;</button>
+
+        </div>
+    </div>
+
+    <script src="js/slider.js"></script>
+</body>
+
+</html>
