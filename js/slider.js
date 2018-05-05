@@ -10,9 +10,9 @@ var numSlides = 0,
         if (i == 0) {
             btn.className = "selected"
         }
-        btn.onclick = (function(b, j) {
-            return function() { showSlide(b, j) }
-        })(btn, i);
+        btn.onclick = (function(j) {
+            return function() { showSlide(j) }
+        })(i);
         btn.dataset.slide = i;
         dots.appendChild(btn);
     }
@@ -20,44 +20,21 @@ var numSlides = 0,
 })();
 
 function nextSlide() {
-    var curSlide = document.querySelector("[data-index='" + index + "']");
-    var curDot = document.querySelector("[data-slide='" + index + "']");
-    index = (index + 1) % numSlides;
-    var nSlide = document.querySelector("[data-index='" + index + "']");
-    var nDot = document.querySelector("[data-slide='" + index + "']");
-    curSlide.style.opacity = "0";
-    curDot.className = "";
-    nSlide.style.opacity = "1";
-    nDot.className = "selected";
+    showSlide((index + 1) % numSlides);
 }
-
 
 function prevSlide() {
+    showSlide (((index - 1) % numSlides + numSlides) % numSlides);
+}
+
+function showSlide(idx) {
     var curSlide = document.querySelector("[data-index='" + index + "']");
     var curDot = document.querySelector("[data-slide='" + index + "']");
-    index = ((index - 1) % numSlides + numSlides) % numSlides;
+    index = idx;
     var nSlide = document.querySelector("[data-index='" + index + "']");
     var nDot = document.querySelector("[data-slide='" + index + "']");
     curSlide.style.opacity = "0";
     curDot.className = "";
     nSlide.style.opacity = "1";
     nDot.className = "selected";
-}
-
-function showSlide(btn, idx) {
-    var dots = document.getElementById("dots").childNodes;
-    for (var i = 0; i < dots.length; ++i) {
-        dots[i].className = "";
-    }
-    for (var i = 0; i < numSlides; ++i) {
-        if (i == idx) {
-            var element = document.querySelector("[data-index='" + i + "']");
-            element.style.opacity = "1"
-        } else {
-            var element = document.querySelector("[data-index='" + i + "']");
-            element.style.opacity = "0";
-        }
-    }
-    index = idx;
-    btn.className = "selected"
 }
