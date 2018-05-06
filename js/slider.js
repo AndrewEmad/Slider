@@ -36,7 +36,7 @@
             btn.dataset.slide = j;
             dots.appendChild(btn);
         }
-        sliders[i].getElementsByClassName("slides-container")[0].appendChild(dots);
+        slidesContainer.appendChild(dots);
 
         sliders[i].nextSlide = function() {
             this.showSlide((this.index + 1) % this.slidesCount);
