@@ -5,19 +5,20 @@ body {
     margin: 0;
 }
 
-#slider {
+.slider {
     width: 100%;
     height: 400px;
+    margin-bottom:50px
 }
 
-#slides-container {
+.slides-container {
     width: 100%;
     height: 400px;
     position: relative;
     overflow: hidden
 }
 
-#slider .slide {
+.slider .slide {
     height: 400px;
     transition: all 1s ease-in-out;
     position: absolute;
@@ -25,32 +26,34 @@ body {
     display: inline-block
 }
 
-#slider .next {
+.slider .next {
     float: right;
     width: 5%;
     height: 100%;
     font-size: 20px;
 }
 
-#slider .prev {
+.slider .prev {
     float: left;
     width: 5%;
     height: 100%;
     font-size: 20px;
 }
 
-#slider .slide img {
+.slider .slide img {
     width: 100%;
     height: 100%
 }
 
-#slider #dots {
+.slider .dots {
     position: relative;
     top: 350px;
     text-align: center;
+    width:90%;
+    margin:auto;
 }
 
-#slider #dots button {
+.slider .dots button {
     border-radius: 100%;
     border: 1px groove #fff;
     background: rgba(255, 255, 255, .6);
@@ -63,8 +66,8 @@ body {
     
 }
 
-#slider #dots button:hover,
-#slider #dots button.selected {
+.slider .dots button:hover,
+.slider .dots button.selected {
     border-color: #000;
     background: #fff;
     transform: scale(1.3);
