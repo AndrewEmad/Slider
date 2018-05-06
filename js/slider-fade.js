@@ -5,22 +5,20 @@
         var slides = slidesContainer.children;
         sliders[i].slidesCount = slides.length;
 
-        /* Changed */
-        slidesContainer.style.width = slides.length * 100 + "%";
-        slidesContainer.style.transition = "all 1s ease-in-out";
-        slidesContainer.style.left = "0";
-        /* Changed */
-
         for(var j=0;j<slides.length;++j){
-            /* Changed */
-            slides[j].style.position = "relative";
-            slides[j].style.float = "left";
-            slides[j].style.width = 100/slides.length+"%"
-            /* Changed */
+            slides[j].style.position = "absolute";
+            slides[j].style.transition = "all 1s ease-in-out";
+            if(j==0)
+                slides[j].style.opacity = "1";
+            else
+                slides[j].style.opacity = "0";
+
         }
 
 
         sliders[i].index=0;
+
+
         var buttons = document.createElement("DIV");
         buttons.className="buttons";
         var prevBtn = document.createElement("BUTTON");
@@ -66,13 +64,14 @@
         }
         
         sliders[i].showSlide = function (idx) {
-            /* Changed */
-            this.getElementsByClassName("slides-container")[0].style.left=-100*idx+"%"
-            /* Changed */
+            var curSlide = this.querySelector("[data-index='" + this.index + "']");
             var curDot = this.querySelector("[data-slide='" + this.index + "']");
             this.index = idx;
+            var nSlide = this.querySelector("[data-index='" + this.index + "']");
             var nDot = this.querySelector("[data-slide='" + this.index + "']");
+            curSlide.style.opacity = "0";
             curDot.className = "";
+            nSlide.style.opacity = "1";
             nDot.className = "selected";
         }
     }
