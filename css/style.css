@@ -47,7 +47,7 @@
 
 .slider .next,.slider .prev{
     border:none;
-    background: rgba(0,0,0,.6);
+    background: rgba(0,0,0,.5);
     color:#fff;
     transition:all .2s ease-in-out;
     width: 60px;
@@ -98,7 +98,7 @@
 
 .slider .dots button:hover,
 .slider .dots button.selected {
-    background: rgba(255, 255, 255, .9);
+    background: #fff;
     transform: scale(1.3);
     cursor: pointer;
 }
