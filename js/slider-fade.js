@@ -1,23 +1,23 @@
 (function() {
     var sliders = document.getElementsByClassName("slider");
     for(var i=0;i<sliders.length;++i){
+        sliders[i].classList.add("slider-fade");
         var slidesContainer = sliders[i].getElementsByClassName("slides-container")[0];
-        var slides = slidesContainer.children;
+        var slides = slidesContainer.getElementsByClassName("slide");
         sliders[i].slidesCount = slides.length;
 
         for(var j=0;j<slides.length;++j){
-            slides[j].style.position = "absolute";
-            slides[j].style.transition = "all 1s ease-in-out";
             if(j==0)
                 slides[j].style.opacity = "1";
             else
                 slides[j].style.opacity = "0";
 
+
+            slides[j].dataset.index = j;
         }
 
 
         sliders[i].index=0;
-
 
         var buttons = document.createElement("DIV");
         buttons.className="buttons";
