@@ -2,11 +2,21 @@ HTMLElement.prototype.slider = function(options) {
     var slider = this;
 
     var defaults = {
-        animation: "fade"
+        animation: "fade",
+        autoSlide: false,
+        duration: 2000
     };
 
     options = options || defaults;
     options.animation = options.animation || defaults.animation
+    options.autoSlide = options.autoSlide || defaults.autoSlide
+    options.duration = options.duration || defaults.duration
+    options.duration = Math.max(defaults.duration, options.duration)
+
+    if (options.autoSlide)
+        var autoSlideInterval = setInterval(function() { slider.nextSlide(); }, options.duration);
+
+
 
     if (options.animation == "sliding") {
         slider.classList.add("slider-sliding");
@@ -45,14 +55,23 @@ HTMLElement.prototype.slider = function(options) {
     prevBtn.className = "prev";
     prevBtn.innerHTML = "&lArr;"
     prevBtn.onclick = (function(slider) {
-        return function() { slider.prevSlide(); }
+        return function() {
+            slider.prevSlide();
+            if (autoSlideInterval)
+                clearInterval(autoSlideInterval);
+        }
     })(slider);
 
     var nextBtn = document.createElement("BUTTON");
     nextBtn.className = "next";
     nextBtn.innerHTML = "&rArr;"
     nextBtn.onclick = (function(slider) {
-        return function() { slider.nextSlide(); }
+        return function() {
+            slider.nextSlide();
+            if (autoSlideInterval)
+                clearInterval(autoSlideInterval);
+
+        }
     })(slider);
 
 
@@ -64,7 +83,11 @@ HTMLElement.prototype.slider = function(options) {
             btn.className = "selected"
         }
         btn.onclick = (function(k, slider) {
-            return function() { slider.showSlide(k) }
+            return function() {
+                slider.showSlide(k);
+                if (autoSlideInterval)
+                    clearInterval(autoSlideInterval);
+            }
         })(j, slider);
         btn.dataset.slide = j;
         dots.appendChild(btn);
@@ -98,5 +121,7 @@ HTMLElement.prototype.slider = function(options) {
         curDot.className = "";
         nDot.className = "selected";
     }
+
+
 
 }
