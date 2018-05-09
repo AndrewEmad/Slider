@@ -10,26 +10,54 @@
 </head>
 
 <body>
-    <div class="slider">
-        <div class="slides-container">
-            <div class="slide" >
-                <img src="img/1.jpg" />
+    <div class="slider" id="mySlider-sliding">
+        <div class=" slides-container ">
+            <div class="slide ">
+                <img src="img/1.jpg " />
             </div>
-            <div class="slide">
-                <img src="img/2.jpg" />
+            <div class="slide ">
+                <img src="img/2.jpg " />
             </div>
-            <div class="slide">
-                <img src="img/3.jpg" />
+            <div class="slide ">
+                <img src="img/3.jpg " />
             </div>
-            <div class="slide">
-                <img src="img/4.jpg" />
+            <div class="slide ">
+                <img src="img/4.jpg " />
             </div>
 
         </div>
     </div>
 
 
-    <script src="js/slider-sliding.js"></script>
+    <div class="slider" id="mySlider-fade">
+        <div class=" slides-container ">
+            <div class="slide ">
+                <img src="img/1.jpg " />
+            </div>
+            <div class="slide ">
+                <img src="img/2.jpg " />
+            </div>
+            <div class="slide ">
+                <img src="img/3.jpg " />
+            </div>
+            <div class="slide ">
+                <img src="img/4.jpg " />
+            </div>
+
+        </div>
+    </div>
+
+
+    <script src="js/slider.js "></script>
+    <script>
+        document.getElementById("mySlider-sliding").slider({
+            animation: "sliding"
+        });
+
+        document.getElementById("mySlider-fade").slider({
+            animation: "fade"
+        });
+    </script>
 </body>
 
 </html>
